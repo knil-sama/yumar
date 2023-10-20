@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["knil-sama"]
+readme = "README.md"
+
+packages = [
+    {include = "backend"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+models =  {path = "../models", develop = true}
+haversine = "2.8.0 "
+msgspec = "0.18.4"
+
+[tool.poetry.group.test.dependencies]
+pytest = "7.4.0"
+pytest-env = "0.8.2"
+pytest-mock = "3.11.1"
+pytest-cov = "4.1.0"
+pytest-fail-slow = "0.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+env = [
+    "DATA_DIRECTORY=/workspace/data",
+]
