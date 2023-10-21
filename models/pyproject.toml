@@ -13,6 +13,13 @@ python = "^3.11"
 pydantic = "2.4.2"
 pydantic-extra-types = "2.1.0"
 
+[tool.poetry.group.test.dependencies]
+pytest = "7.4.0"
+pytest-env = "0.8.2"
+pytest-mock = "3.11.1"
+pytest-cov = "4.1.0"
+pytest-fail-slow = "0.3.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
