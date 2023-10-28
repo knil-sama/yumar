@@ -16,9 +16,9 @@ from models.search_query import SearchQuery
 @pytest.fixture
 def valid_restaurant_json() -> dict:
     return {
-        "id": "n175539450",
+        "full_id": "n175539450",
         "name": "Le Severo",
-        "coordinate": (48.8319929, 2.3245488),
+        "coordinates": (48.8319929, 2.3245488),
     }
 
 

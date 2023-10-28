@@ -58,7 +58,7 @@ def from_geojson_to_restaurant_json(geojson_feature: dict) -> dict:
 
     Returns:
         dict: A restaurant json that contain only
-            full_id=> id, name, coordinate (latitude, longitude)
+            full_id, name, coordinates (latitude, longitude)
     """
     if geojson_feature["geometry"]["type"] != "Point":
         raise NotAValidPointError
@@ -66,9 +66,9 @@ def from_geojson_to_restaurant_json(geojson_feature: dict) -> dict:
     # use (longitude, latitude) were our model
     # follow (latitude, longitude) so we invert it here
     return {
-        "id": geojson_feature["properties"]["full_id"],
+        "full_id": geojson_feature["properties"]["full_id"],
         "name": geojson_feature["properties"]["name"],
-        "coordinate": tuple(reversed(geojson_feature["geometry"]["coordinates"])),
+        "coordinates": tuple(reversed(geojson_feature["geometry"]["coordinates"])),
     }
 
 

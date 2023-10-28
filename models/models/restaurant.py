@@ -1,10 +1,13 @@
-from pydantic import (
-    BaseModel,
-)
+from pydantic import AliasChoices, BaseModel, Field
 from pydantic_extra_types.coordinate import Coordinate
 
 
 class Restaurant(BaseModel):
-    id: str  # noqa: A003
+    restaurant_id: str = Field(
+        alias="id",
+        validation_alias=AliasChoices("id", "full_id"),
+    )
     name: str
-    coordinate: Coordinate
+    coordinate: Coordinate = Field(
+        validation_alias=AliasChoices("coordinate", "coordinates"),
+    )
