@@ -8,7 +8,7 @@ from backend.load_data import (
 from pathlib import Path
 import pytest
 import os
-from pydantic_extra_types.coordinate import Coordinate
+from pydantic_extra_types.coordinate import Coordinate, Longitude, Latitude
 from models.restaurant import Restaurant
 from models.search_query import SearchQuery
 
@@ -24,17 +24,17 @@ def valid_restaurant_json() -> dict:
 
 @pytest.fixture
 def search_query_in_paris_100m() -> SearchQuery:
-    return SearchQuery(coordinate=Coordinate(48.8319929, 2.3245488), radius=100)
+    return SearchQuery(coordinate=Coordinate(Latitude(48.8319929), Longitude(2.3245488)), radius=100)
 
 
 @pytest.fixture
 def search_query_in_paris_50m() -> SearchQuery:
-    return SearchQuery(coordinate=Coordinate(48.8319929, 2.3245488), radius=50)
+    return SearchQuery(coordinate=Coordinate(Latitude(48.8319929), Longitude(2.3245488)), radius=50)
 
 
 @pytest.fixture
 def search_query_in_the_pacific() -> SearchQuery:
-    return SearchQuery(coordinate=Coordinate(-2.809, -157.658), radius=100)
+    return SearchQuery(coordinate=Coordinate(Latitude(-2.809), Longitude(-157.658)), radius=100)
 
 
 @pytest.fixture
@@ -43,42 +43,42 @@ def sample_restaurants() -> list[Restaurant]:
         Restaurant(
             id="n175539450",
             name="Le Severo",
-            coordinate=Coordinate(latitude=48.8319929, longitude=2.3245488),
+            coordinate=Coordinate(latitude=Latitude(48.8319929), longitude=Longitude(2.3245488)),
         ),
         Restaurant(
             id="n1049732032",
             name="Félicie",
-            coordinate=Coordinate(latitude=48.832418, longitude=2.3247172),
+            coordinate=Coordinate(latitude=Latitude(48.832418), longitude=Longitude(2.3247172)),
         ),
         Restaurant(
             id="n2681291765",
             name="Chez Toni",
-            coordinate=Coordinate(latitude=48.8321391, longitude=2.3246523),
+            coordinate=Coordinate(latitude=Latitude(48.8321391), longitude=Longitude(2.3246523)),
         ),
         Restaurant(
             id="n2683241610",
             name="Sushi House",
-            coordinate=Coordinate(latitude=48.8319258, longitude=2.3247528),
+            coordinate=Coordinate(latitude=Latitude(48.8319258), longitude=Longitude(2.3247528)),
         ),
         Restaurant(
             id="n2820712360",
             name="Au P'tit Zinc",
-            coordinate=Coordinate(latitude=48.8323129, longitude=2.3247495),
+            coordinate=Coordinate(latitude=Latitude(48.8323129), longitude=Longitude(2.3247495)),
         ),
         Restaurant(
             id="n6135902382",
             name="Le Saut du Crapaud",
-            coordinate=Coordinate(latitude=48.8315833, longitude=2.3242762),
+            coordinate=Coordinate(latitude=Latitude(48.8315833), longitude=Longitude(2.3242762)),
         ),
         Restaurant(
             id="n7496768887",
             name="Mikopüy",
-            coordinate=Coordinate(latitude=48.8318918, longitude=2.3247313),
+            coordinate=Coordinate(latitude=Latitude(48.8318918), longitude=Longitude(2.3247313)),
         ),
         Restaurant(
             id="n7496819085",
             name="Lida",
-            coordinate=Coordinate(latitude=48.8313102, longitude=2.324098),
+            coordinate=Coordinate(latitude=Latitude(48.8313102), longitude=Longitude(2.324098)),
         ),
     ]
 

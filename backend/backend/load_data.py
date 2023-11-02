@@ -6,7 +6,7 @@ from time import time
 import click
 import msgspec
 from haversine import Unit, haversine
-from pydantic_extra_types.coordinate import Coordinate
+from pydantic_extra_types.coordinate import Coordinate, Latitude, Longitude
 
 from models.restaurant import Restaurant
 from models.restaurant_found import RestaurantFound
@@ -143,7 +143,7 @@ def load_data() -> list[Restaurant]:
 @click.option("--radius", type=click.INT, help="radius of search")
 def main(latitude: float, longitude: float, radius: int) -> None:
     search_query = SearchQuery(
-        coordinate=Coordinate(latitude, longitude),
+        coordinate=Coordinate(Latitude(latitude), Longitude(longitude)),
         radius=radius,
     )
     restaurants = load_data()
